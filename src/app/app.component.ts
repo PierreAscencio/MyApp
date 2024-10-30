@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 interface Opciones{
   icon: string;
@@ -16,28 +18,24 @@ export class AppComponent {
 
   opciones: Opciones[]=[
     {
-      icon:'qr-code-outline',
-      name:'Qr',
-      redirecTo: '/alert'
-    },
-    {
-      icon:'color-wand-outline',
-      name:'Registrarse a evento',
-      redirecTo: '/card'
-    },
-    {
-      icon:'build',
-      name:'Contacto',
-      redirecTo: '/contact'
-    },
-    {
       icon:'person-outline',
       name:'Perfil',
       redirecTo: '/perfil'
     },
+    {
+      icon:'power',
+      name:'Cerrar Sesión',
+      redirecTo:'/login'
+
+    }
 
   ]
 
-  constructor() {}
+  constructor(private router: Router) {}
+
+  cerrarsesion(){
+    sessionStorage.clear();
+    this.router.navigate(['/login']);
+  }
   
 }

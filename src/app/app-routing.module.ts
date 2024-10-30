@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AutorizadoGuard } from './guards/autorizado.guard';
 
 const routes: Routes = [
   {
@@ -9,15 +10,19 @@ const routes: Routes = [
   },
   {
     path: 'alert',
-    loadChildren: () => import('./pages/alert/alert.module').then( m => m.AlertPageModule)
+    loadChildren: () => import('./pages/alert/alert.module').then( m => m.AlertPageModule),
+    canActivate: [AutorizadoGuard]
+
   },
   {
     path: 'card',
-    loadChildren: () => import('./pages/card/card.module').then( m => m.CardPageModule)
+    loadChildren: () => import('./pages/card/card.module').then( m => m.CardPageModule),
+    canActivate: [AutorizadoGuard]
   },
   {
     path: 'contact',
-    loadChildren: () => import('./pages/contact/contact.module').then( m => m.ContactPageModule)
+    loadChildren: () => import('./pages/contact/contact.module').then( m => m.ContactPageModule),
+    canActivate: [AutorizadoGuard]
   },
   {
     path: 'login',
@@ -33,11 +38,22 @@ const routes: Routes = [
   },
   {
     path: 'iniestudiante',
-    loadChildren: () => import('./pages/iniestudiante/iniestudiante.module').then( m => m.IniestudiantePageModule)
+    loadChildren: () => import('./pages/iniestudiante/iniestudiante.module').then( m => m.IniestudiantePageModule),
+    canActivate: [AutorizadoGuard]
   },
   {
     path: 'perfil',
-    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule),
+    canActivate: [AutorizadoGuard]
+  },
+  {
+    path: 'detalle-evento',
+    loadChildren: () => import('./pages/detalle-evento/detalle-evento.module').then( m => m.DetalleEventoPageModule),
+    canActivate: [AutorizadoGuard]
+  },
+  {
+    path: 'historialdeeventos',
+    loadChildren: () => import('./historialdeeventos/historialdeeventos.module').then( m => m.HistorialdeeventosPageModule)
   },
 ];
 

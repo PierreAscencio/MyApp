@@ -11,7 +11,7 @@ ion-content {
   
   .login-box {
     text-align: center;
-    color: #00a6e7;
+    color: #00ffdd;
     margin: 20px;
     border-radius: 10px;
     background: #333; /* Fondo oscuro para el contenedor del login */
@@ -21,7 +21,7 @@ ion-content {
   }
   
   .boton {
-    --background: #e41212;
+    --background: #2be412;
     --background-hover: #9ce0be;
     --background-activated: #dee4ab;
     --background-focused: #c8de05;
@@ -37,12 +37,12 @@ ion-content {
   }
   #titulo{
     text-align: center;
-    color: #00a2ff;
+    color: #00ffd5;
 }
 .titulo {
   text-align: center;
-  font-family: 'titulo', serif;
-  --color: #008cff;
+  font-family: 'titulo', sans-serif;
+  --color: #00ffea;
 }
 
 

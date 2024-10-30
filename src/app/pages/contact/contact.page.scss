@@ -2,12 +2,12 @@
 
     text-align: center;
 
-    --background: #ff0000;
+    --background: #000000;
     --background-hover: #000000;
     --background-activated: #000000;
     --background-focused: #000000;
 
-    --color: #000000;
+    --color: #00ffea;
 
     --border-radius: 15px;
     --border-color: #000;
@@ -23,12 +23,12 @@
 }
 #titulo{
     text-align: center;
-    color: #008cff;
+    color: rgb(0, 217, 255);
 }
 .titulo {
     text-align: center;
     font-family: 'titulo', sans-serif;
-    --color: #00aeff;
+    --color: #e4b312;
   }
 
 

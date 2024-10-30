@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Eventos,EventosM } from 'src/interfaces/eventos';
+import { ApicrudService } from 'src/app/services/apicrud.service';
+import { register } from 'swiper/element/bundle';
+register();
+
+
 @Component({
   selector: 'app-iniestudiante',
   templateUrl: './iniestudiante.page.html',
@@ -9,12 +15,27 @@ import { Router } from '@angular/router';
 })
 export class IniestudiantePage implements OnInit {
 
+  Event:EventosM[]=[];
+
   constructor(private menu:MenuController,
     private alertcontroller: AlertController,
-    private router: Router) { }
+    private router: Router,
+    private apicrud: ApicrudService) { }
 
 ngOnInit() {
+  this.apicrud.getEventos().subscribe((data)=>{
+    this.Event=data;
+  })
 }
+
+images=[
+  'assets/foto2.jpg',
+  'assets/foto3.jpg',
+  'assets/foto4.jpg',
+  'assets/foto5.jpg',
+  
+]
+
 
 mostrarMenu(){
 this.menu.open('first');
@@ -73,9 +94,13 @@ buttons: [
 
 await alert.present();      //activa la ventana del alertcontroller
 
-}
+  }
 
-
+  buscarEvento(Observable:any){
+    this.router.navigate(['/detalle-evento'],
+      {queryParams:{evento: JSON.stringify(Observable)}}
+    )
+  }
 
 
 }

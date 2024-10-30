@@ -1,8 +1,8 @@
 .boton{
-    --background: #ff0000;
+    --background: #5eff01;
     --background-hover: #9ce0be;
     --background-activated: #dee4ab;
-    --background-focused: #c8de05;
+    --background-focused: #4ade05;
   
     --color: rgb(0, 0, 0);
   
@@ -13,18 +13,22 @@
 }
 #perUser{
     text-align: center;
-    color: #00c3ff;
+    color: #00ffdd;
 }
 .menucolor{
-    --color: #00b7ff;
+    --color: #00ffff;
   }
   .titulo {
     
-    font-family: 'titulo', serif;
-    --color: #00b7ff;
+    font-family: 'titulo', sans-serif;
+    --color: #00ffea;
   }
 
 
   .texto {
     font-family: 'texto', serif;
+    color: #00ff40;
+  }
+  .centrarfoto{
+    text-align: center;
   }

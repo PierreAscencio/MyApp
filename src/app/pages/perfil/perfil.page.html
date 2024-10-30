@@ -6,52 +6,63 @@
         text=""
         color="dark"></ion-back-button>
     </ion-buttons>
-    <ion-title id="perUser" class="titulo">Perfil De Usuario</ion-title>
-  </ion-toolbar> 
+    <ion-title class="titulo">Perfil</ion-title>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content> 
+  <!-- Card para mostrar los datos del perfil -->
   <ion-card>
     <ion-card-header>
-      <ion-card-title class="titulo" style="text-align: center;">Datos Del Usuario</ion-card-title>
+      <ion-card-title class="titulo">Datos del Perfil</ion-card-title>
     </ion-card-header>
     <ion-card-content>
+        <div style="text-align: center;">
+          <ion-label color="warning" style="text-align: center;"></ion-label>
+          <img *ngIf="imagen" [src]="imagen" alt="Perfil del Alumno" />
+        </div>
       <ion-item>
-        <ion-label position="stacked" class="titulo">Nombre</ion-label>
-        <ion-input [(ngModel)]="user.name" [readonly]="!isEditing"></ion-input>
+        <ion-label color="warning">Nombre:</ion-label>
+        <ion-text>{{ nombre }}</ion-text>
       </ion-item>
-
       <ion-item>
-        <ion-label position="stacked" class="titulo">Correo Electrónico</ion-label>
-        <ion-input [(ngModel)]="user.email" [readonly]="!isEditing" type="email"></ion-input>
+        <ion-label color="warning">Email:</ion-label>
+        <ion-text>{{ email }}</ion-text>
       </ion-item>
-
-      <!-- Contraseña (solo visible si está en modo edición) -->
-      <ion-item>
-        <ion-label position="stacked" class="titulo">Contraseña</ion-label>
-        <ion-input [(ngModel)]="user.password" [readonly]="!isEditing" [type]="passwordType" placeholder="********"></ion-input>
-        <ion-icon
-          [name]="passwordType === 'password' ? 'eye-off-outline' : 'eye-outline'"
-          slot="end"
-          (click)="togglePasswordVisibility()"
-        ></ion-icon>
-      </ion-item>
-
-      <!-- Confirmación de contraseña, solo aparece cuando estamos editando -->
-      <ion-item *ngIf="isEditing">
-        <ion-label position="stacked" class="titulo">Confirmar Contraseña</ion-label>
-        <ion-input [(ngModel)]="confirmPassword" type="password" placeholder="Repita La Contraseña"></ion-input>
-      </ion-item>
-
-      <!-- Mensaje de error si las contraseñas no coinciden -->
-      <ion-text color="danger" *ngIf="isEditing && !passwordsMatch">
-        <p>Las contraseñas no coinciden</p>
-      </ion-text>
-
-      <!-- Botones -->
-      <ion-button expand="block" *ngIf="!isEditing" (click)="enableEditing()" class="boton">Editar</ion-button>
-      <ion-button expand="block" *ngIf="isEditing" [disabled]="!passwordsMatch" (click)="saveProfile()" class="boton">Guardar Cambios</ion-button>
-      <ion-button expand="block" *ngIf="isEditing" color="medium" (click)="cancelEditing()" class="boton">Cancelar</ion-button>
     </ion-card-content>
   </ion-card>
+  <form style="margin-top: 40%;">
+    <ion-item>
+      <ion-input class="texto"  type="text" name="nombre" label="Nombre:" 
+         labelPlacement="floating" [(ngModel)]="nombre">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input  class="texto"  type="text" name="tipo" label="Correo:" 
+         labelPlacement="floating" [(ngModel)]="email">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input class="texto"  type="text" name="color" label="Password:" 
+         labelPlacement="floating" [(ngModel)]="password">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="warning"></ion-label>
+      <input type="file" (change)="onFileSelected($event)" accept="imagen" />
+    </ion-item>
+   
+
+
+    <div style="text-align: center; margin-top: 30px;">
+      <ion-button (click)="actualizarAlumno()" shape="round"  class="boton">
+        Actualizar
+      </ion-button>
+      
+    </div>
+
+  </form>
 </ion-content>

@@ -1,5 +1,5 @@
 <ion-app>
-  <ion-menu  contentId="main" menuId="first" side="start" type="overlay">
+  <ion-menu  contentId="main" menuId="first" side="start" type="overlay" >
     <ion-header>
       <ion-toolbar class="menucolor">
         <ion-icon slot="start" name="cog" size="large" style="padding-left:10px;"></ion-icon>
@@ -9,7 +9,7 @@
 
     <ion-content>
         <ion-list lines="none">
-          <ion-menu-toggle *ngFor="let m of opciones">
+          <ion-menu-toggle *ngFor="let m of opciones" (click)="m.name == 'Cerrar Sesión' ? cerrarsesion(): null">
             <ion-item [routerLink]="m.redirecTo" detail="true">
               <ion-icon slot="start" [name]="m.icon" color="dark"></ion-icon>
               <ion-label>{{m.name}}</ion-label>

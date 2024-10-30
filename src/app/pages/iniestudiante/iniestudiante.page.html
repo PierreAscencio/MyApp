@@ -6,92 +6,36 @@
       </ion-button>
     </ion-buttons>
     <ion-title class="titulo">Duoc-Events</ion-title>
-    
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="texto">
- 
-  
-  <ion-card id="ion-card-god">
-    <ion-card-header>
-      <ion-card-title class="titulo">¡Bienvenido a la App de Eventos de Duoc UC! </ion-card-title>
-      <ion-card-subtitle>Septiembre 2024 Fecha de lanzamiento</ion-card-subtitle>
-    </ion-card-header>
-  
-    <ion-card-content>
-      Estamos Encantados De tenerte con nosotros en esta plataforma, que tiene como objetivo conectar a la comunidad de Duoc UC con los eventos más emocionantes y enriquecedores de nuestra Escuela de Informática. Toda la información que necesita sobre hackatones, seminarios, talleres y mucho más está aquí.    
-    </ion-card-content>
-    
-  </ion-card>
+
+
+<ion-content [fullscreen]="true" >
   <ion-card>
-    <ion-img src="assets/hackaton.png" id="foto" class="foto"></ion-img>
-    <ion-card-header>
-      <ion-card-title class="titulo">Hackathon Duoc UC: Innovación en Acción</ion-card-title>
-      <ion-card-subtitle>Octubre 2024</ion-card-subtitle>
-    </ion-card-header>
-  
-    <ion-card-content>
-      Este evento de 48 horas reúne a estudiantes, egresados y profesionales para desarrollar soluciones innovadoras a problemas reales. Los participantes formarán equipos y competirán en desafíos relacionados con tecnología, programación y desarrollo de software. Habrá talleres y charlas de expertos, así como premios para los proyectos más destacados.
-    </ion-card-content>
-    <div id="botones-contenedor">
-      <div id="botonizqui">
-        <ion-button (click)="mensaje()" class="boton" fill="solid" shape="round">
-          Generar Qr
-        </ion-button>
-      </div>
-      <div id="botonderecha">
-        <ion-button (click)="mensajecard()" class="boton" fill="solid" shape="round">
-          Registrarse
-        </ion-button>
-      </div>
-    </div>
+    <swiper-container pagination="true" autoplay="true" loop="true">
+      <swiper-slide *ngFor="let image of images">
+        <img [src]="image" alt="Imagen">
+      </swiper-slide>
+    </swiper-container>
   </ion-card>
-  <ion-card>
-    <ion-img src="assets/eventos.png" id="foto" class="foto"></ion-img>
-    <ion-card-header>
-      <ion-card-title class="titulo">Seminario de Tendencias en Tecnología: Del Código al Mercado</ion-card-title>
-      <ion-card-subtitle>24 de abril 2024</ion-card-subtitle>
-    </ion-card-header>
+   
   
-    <ion-card-content>
-      Un seminario enfocado en las últimas tendencias tecnológicas, desde inteligencia artificial y blockchain hasta el futuro de la ciberseguridad. Expertos de la industria, egresados exitosos y profesores compartirán sus conocimientos y experiencias, proporcionando a los asistentes una visión integral de cómo estas tendencias están moldeando el mercado laboral y el desarrollo tecnológico.
-    </ion-card-content>
-    <div id="botones-contenedor">
-      <div id="botonizqui">
-        <ion-button (click)="mensaje()" class="boton" fill="solid" shape="round">
-          Generar Qr
-        </ion-button>
-      </div>
-      <div id="botonderecha">
-        <ion-button (click)="mensajecard()" class="boton" fill="solid" shape="round">
-          Registrarse
-        </ion-button>
-      </div>
-    </div>
-  </ion-card>
-  <ion-card>
-    <ion-img src="assets/inno.png" id="foto" class="foto"></ion-img>
-    <ion-card-header>
-      <ion-card-title class="titulo">Día de la Innovación: Proyectos y Prototipos</ion-card-title>
-      <ion-card-subtitle>9 de Julio 2024</ion-card-subtitle>
-    </ion-card-header>
-  
-    <ion-card-content>
-      Un evento destinado a mostrar los proyectos y prototipos desarrollados por los estudiantes y equipos de investigación de la escuela. Los asistentes podrán explorar una feria de proyectos, participar en demostraciones en vivo y escuchar presentaciones sobre los desafíos y soluciones en el campo de la informática. Este evento busca fomentar la creatividad y el espíritu emprendedor dentro de la comunidad académica.
-    </ion-card-content>
-    <div id="botones-contenedor">
-      <div id="botonizqui">
-        <ion-button (click)="mensaje()" class="boton" fill="solid" shape="round">
-          Generar Qr
-        </ion-button>
-      </div>
-      <div id="botonderecha">
-        <ion-button (click)="mensajecard()" class="boton" fill="solid" shape="round">
-          Registrarse
-        </ion-button>
-      </div>
-    </div>
-  </ion-card>
-  
+
+
+  <ion-list>
+    <ion-card *ngFor="let e of Event" (click)="buscarEvento(e)">
+      <ion-card-header>
+        <img src="{{ e.imagen }}"><br><br>
+        <ion-card-title>{{ e.nombreEvento }}</ion-card-title>
+        <ion-card-subtitle>{{ e.lugar }} | {{ e.fecha | date: 'dd/MM/yyyy' }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-thumbnail slot="start">
+        </ion-thumbnail>
+        <h2>Descripción:</h2>
+        <p>{{ e.descripcion }}</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list> 
 </ion-content> 

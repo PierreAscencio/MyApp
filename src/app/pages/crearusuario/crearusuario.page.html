@@ -11,41 +11,71 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title class="titulo">Creacion De Usuario</ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      <ion-list>
-        <!-- Nombre -->
+  <form [formGroup]="registroForm">
+    <div class="login-container">
+      <div class="login-box">
         <ion-item>
-          <ion-input type="text" label="Nombre:" name="nombre" [(ngModel)]="nombre" labelPlacement="stacked" placeholder="Ingrese Aquí Su Nombre" required></ion-input>
+          <ion-label position="floating"></ion-label>
+          <ion-input type="text" placeholder="Ingrese Nombre..." formControlName="nombre"></ion-input>
         </ion-item>
-
-        <!-- Correo electrónico -->
+          <div id="alerta" *ngIf="registroForm.get('nombre')?.invalid && (registroForm.get('nombre')?.dirty ||
+                      registroForm.get('nombre')?.touched)">
+              <div id="alerta" *ngIf="registroForm.get('nombre')?.hasError('required')">
+                *Nombre es Obligatorio
+              </div>          
+              <div id="alerta" *ngIf="registroForm.get('nombre')?.hasError('minlength')">
+                *Nombre debe contener minimo 3 caracteres
+              </div>
+          </div>
         <ion-item>
-          <ion-input type="email" label="Correo Electrónico:" name="email" [(ngModel)]="email" labelPlacement="stacked" placeholder="Ingrese Aquí Su Correo Electrónico" required></ion-input>
+          <ion-label position="floating"></ion-label>
+          <ion-input type="email" placeholder="Ingrese email..." formControlName="email"></ion-input>
         </ion-item>
+          <div id="alerta" *ngIf="registroForm.get('email')?.invalid && (registroForm.get('email')?.dirty ||
+                      registroForm.get('email')?.touched)">
+              <div id="alerta" *ngIf="registroForm.get('email')?.hasError('required')">
+                *email es Obligatorio
+              </div>          
+              <div id="alerta" *ngIf="registroForm.get('email')?.hasError('email')">
+                *Formato no valido
+              </div>
+          </div>
+          <ion-item>
+            <ion-input type="password" formControlName="password" placeholder="Contraseña...."></ion-input>
+          </ion-item>
 
-        <!-- Contraseña -->
-        <ion-item>
-          <ion-input type="password" label="Contraseña:" name="password" [(ngModel)]="password" labelPlacement="stacked" placeholder="Ingrese Aqí su contraseña" required minlength="8"></ion-input>
-        </ion-item>
+            <div id="alerta" *ngIf="registroForm.get('password')?.invalid && (registroForm.get('password')?.dirty || 
+                        registroForm.get('password')?.touched)">
+                <div id="alerta"*ngIf="registroForm.get('password')?.hasError('required')">
+                  *Password es obligatorio
+                </div>
+                <div id="alerta"*ngIf="registroForm.get('password')?.hasError('pattern')">
+                  *Password debe tener mínimo 8 caracteres, una letra y un número
+              </div>
+            </div>
 
-        <!-- Confirmar Contraseña -->
-        <ion-item>
-          <ion-input type="password" label="Confirmar Contraseña:" name="confirmPassword" [(ngModel)]="confirmPassword" labelPlacement="stacked" placeholder="Re ingrese la Contraseña" required></ion-input>
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-
-    <!-- Botón de enviar -->
-    <div id="centrar">
-      <ion-button id="bcentrar" (click)="crearUsuario()" class="boton" fill="solid" shape="round">
-        Crear Usuario
-      </ion-button>
-    </div>
-  </ion-card>
+            <ion-item>
+              <ion-label position="floating"></ion-label>
+              <ion-input type="text" placeholder="Ingrese Rut..." formControlName="rut"></ion-input>
+            </ion-item>
+              <div id="alerta" *ngIf="registroForm.get('rut')?.invalid && (registroForm.get('rut')?.dirty ||
+                          registroForm.get('rut')?.touched)">
+                  <div id="alerta" *ngIf="registroForm.get('rut')?.hasError('required')">
+                    *Rut es Obligatorio
+                  </div>          
+                  <div id="alerta" *ngIf="registroForm.get('rut')?.hasError('rut')">
+                    *Formato no valido
+                  </div>
+              </div>
+            <div style="text-align: center; margin-top: 30px;">
+              <ion-button (click)="crearUsuario()" [disabled]="!registroForm.valid" shape="round"  class="boton">
+                Crear Usuario
+              </ion-button>
+            </div>
+          </div>
+        </div>
+        
+  </form>
+ 
 </ion-content>
 
