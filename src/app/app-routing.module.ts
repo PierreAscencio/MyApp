@@ -53,7 +53,11 @@ const routes: Routes = [
   },
   {
     path: 'historialdeeventos',
-    loadChildren: () => import('./historialdeeventos/historialdeeventos.module').then( m => m.HistorialdeeventosPageModule)
+    loadChildren: () => import('./pages/historialdeeventos/historialdeeventos.module').then( m => m.HistorialdeeventosPageModule)
+  },
+  {
+    path: 'comentarevento',
+    loadChildren: () => import('./pages/comentarevento/comentarevento.module').then( m => m.ComentareventoPageModule)
   },
 ];
 

@@ -23,6 +23,12 @@ export class AppComponent {
       redirecTo: '/perfil'
     },
     {
+      icon:'clipboard-outline',
+      name:'Historial de Usuario',
+      redirecTo:'/historialdeeventos'
+
+    },
+    {
       icon:'power',
       name:'Cerrar Sesión',
       redirecTo:'/login'

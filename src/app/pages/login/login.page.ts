@@ -79,6 +79,7 @@ constructor(private authservice:AuthService,
 
     this.authservice.GetUserByAlmuno(email).subscribe(resp =>{
       this.userdata = resp;
+      console.log(this.userdata);
       if (this.userdata.length === 0) {
         this.loginForm.reset();
         this.alumnoNoExiste();

@@ -39,7 +39,7 @@ export class AutorizadoGuard {
   async showToast(msg: any){
     const toast = await this.toast.create({
       message:msg,
-      duration: 8000
+      duration: 3000
     });
     toast.present();
   }

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Alumnos,AlumnosM } from 'src/interfaces/alumnos';
 import { environment } from 'src/environments/environment';
 import { REACTIVE_NODE } from '@angular/core/primitives/signals';
+import { misQr,QrAll } from 'src/interfaces/alumnos';
 
 
 @Injectable({
@@ -28,10 +29,13 @@ export class AuthService {
   PostAlumno(newAlumno:AlumnosM):Observable<AlumnosM>{
     return this.httpclient.post<Alumnos>(`${environment.apiUrl}/alumnos/`,newAlumno);
   }
-  
+
   GetAlumnoByrut(rut:string):Observable<Alumnos>{
     return this.httpclient.get<Alumnos>(`${environment.apiUrl}/alumnos/?rut=${rut}`);
   
+  }
+  PostQr(newQr:misQr):Observable<misQr>{
+    return this.httpclient.post<QrAll>(`${environment.apiUrl}/qr`, newQr);
   }
 
 }

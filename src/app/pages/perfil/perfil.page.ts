@@ -36,7 +36,9 @@ export class PerfilPage implements OnInit {
     this.email = sessionStorage.getItem("email") || '';
     this.password = sessionStorage.getItem("password") || '';
     this.id = sessionStorage.getItem("id");
-    this.imagen = sessionStorage.getItem("imagen") || '';
+    this.imagen = sessionStorage.getItem("imagen") || 'assets/gato.png';
+    console.log('URL de la imagen:', this.imagen)
+    console.log('id del estudiante:', this.id)
 
 
     

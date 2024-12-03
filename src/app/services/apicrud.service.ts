@@ -3,9 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Eventos,EventosM } from 'src/interfaces/eventos';
 import { environment } from 'src/environments/environment';
-import { IniestudiantePage } from '../pages/iniestudiante/iniestudiante.page';
-import { IonAlert } from '@ionic/angular';
 import { Alumnos, AlumnosM } from 'src/interfaces/alumnos';
+import { misQr } from 'src/interfaces/alumnos';
 
 
 @Injectable({
@@ -38,4 +37,8 @@ export class ApicrudService {
   putAlumno(id: string, Alumnos: AlumnosM): Observable<AlumnosM> {
     return this.httpclient.patch<AlumnosM>(`${environment.apiUrl}/alumnos/${id}`, Alumnos);
   }
+  getHistorial(): Observable<misQr[]> {
+    return this.httpclient.get<misQr[]>(`${environment.apiUrl}/qr`);
+  }
+  
 }
